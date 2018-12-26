@@ -23,10 +23,11 @@ public class DemoConsumer {
     @RabbitHandler
     public void process(@Payload String msg,
                         @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag,
-                        AMQP.
                         Channel channel, Message message) {
 
         try {
+            message.getMessageProperties();
+
             //TODO 业务处理
             int i = Integer.valueOf(msg);
             i=1 / i;

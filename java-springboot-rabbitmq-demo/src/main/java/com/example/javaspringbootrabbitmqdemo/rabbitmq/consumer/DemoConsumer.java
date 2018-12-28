@@ -3,6 +3,7 @@ package com.example.javaspringbootrabbitmqdemo.rabbitmq.consumer;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
@@ -11,6 +12,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author sh 2018/12/24 10:18
@@ -27,6 +29,9 @@ public class DemoConsumer {
                         Channel channel, Message message) {
 
         try {
+            MessageProperties messageProperties = message.getMessageProperties();
+            Map<String, Object> headers = messageProperties.getHeaders();
+
             //TODO 业务处理
             int i = Integer.valueOf(msg);
             i=1 / i;

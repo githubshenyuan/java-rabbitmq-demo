@@ -64,7 +64,7 @@ public class RabbitConfig {
                 .durable("queue_delay")
                 .withArgument("x-dead-letter-exchange", "exchange")
                 .withArgument("x-dead-letter-routing-key", "queen_routeKey")
-                .withArgument("x-message-ttl",60000)
+                .withArgument("x-message-ttl",6000)
                 //.autoDelete()
                 .build();
     }

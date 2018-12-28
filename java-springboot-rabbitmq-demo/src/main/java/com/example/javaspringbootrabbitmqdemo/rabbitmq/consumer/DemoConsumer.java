@@ -17,13 +17,13 @@ import java.io.IOException;
  * @version ideaIU-2018.2.5.win
  */
 @Component
-@RabbitListener(queues = "queen", containerFactory = "container_name")
+
 public class DemoConsumer {
 
+    @RabbitListener(queues = "queen", containerFactory = "container_name")
     @RabbitHandler
     public void process(@Payload String msg,
                         @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag,
-                        AMQP.
                         Channel channel, Message message) {
 
         try {
